@@ -1,0 +1,199 @@
+<div class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card overflow-hidden">
+          <div class="bg-soft bg-primary">
+            <div class="row">
+              <div class="col-7">
+                <div class="text-primary p-4">
+                  <h5 class="text-primary">Registrate</h5>
+                  <p>Obten una cuenta para acceder</p>
+                </div>
+              </div>
+              <div class="col-5 align-self-end">
+                <img
+                  src="assets/images/profile-img.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <div>
+              <a routerLink="/">
+                <div class="avatar-md profile-user-wid mb-4">
+                  <span class="avatar-title rounded-circle bg-light">
+                    <img
+                      src="assets/images/logo.svg"
+                      alt=""
+                      class="rounded-circle"
+                      height="34"
+                    />
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="p-2">
+              <form
+                class="needs-validation"
+                name="signupForm"
+                [formGroup]="signupForm"
+                (ngSubmit)="onSubmit()"
+                novalidate
+              >
+                <div class="mb-3">
+                  <label for="Nombre" class="form-label">Nombre</label>
+
+                  <input
+                    type="text"
+                    formControlName="nombre_usuario"
+                    class="form-control"
+                    [class]="esCampoValido('nombre_usuario')"
+                    id="nombre_usuario"
+                    placeholder="Ingrese su nombre"
+                  />
+
+                  <div class="invalid-feedback">
+                    <span
+                      *ngIf="signupForm.get('nombre_usuario')?.errors?.['required']"
+                    >
+                      Ingrese su nombre
+                    </span>
+                    <span
+                      *ngIf="signupForm.get('nombre_usuario')?.errors?.['pattern']"
+                    >
+                      Sólo letras
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+
+                  <input
+                    type="email"
+                    formControlName="email"
+                    class="form-control"
+                    [class]="esCampoValido('email')"
+                    id="email"
+                    placeholder="Email"
+                  />
+
+                  <div class="invalid-feedback">
+                    <span *ngIf="signupForm.get('email')?.errors?.['required']">
+                      Ingrese un email
+                    </span>
+                    <span *ngIf="signupForm.get('email')?.errors?.['pattern']">
+                      Sólo letras
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Contraseña</label>
+
+                  <input
+                    type="password"
+                    formControlName="password"
+                    class="form-control"
+                    [class]="esCampoValido('password')"
+                    id="password"
+                    placeholder="Ingrese su contraseña"
+                  />
+                  <div class="invalid-feedback">
+                    <span
+                      *ngIf="signupForm.get('password')?.errors?.['required']"
+                    >
+                      Contraseña requerida
+                    </span>
+                    <span
+                      *ngIf="signupForm.get('password')?.errors?.['pattern']"
+                    >
+                      Sólo letras
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Repita su Contraseña</label>
+
+                  <input
+                    type="password"
+                    formControlName="repassword"
+                    class="form-control"
+                    [class]="esCampoValido('repassword')"
+                    id="repassword"
+                    placeholder="Ingrese su contraseña"
+                  />
+                  <div class="invalid-feedback">
+                    <span
+                      *ngIf="signupForm.get('repassword')?.errors?.['required']"
+                    >
+                      Contraseña requerida
+                    </span>
+                    <span
+                      *ngIf="signupForm.get('repassword')?.errors?.['pattern']"
+                    >
+                      Sólo letras
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mt-4 d-grid">
+                  <button class="btn btn-primary" type="submit">
+                    Registrar
+                  </button>
+                </div>
+                <div class="mt-4 text-center">
+                  <h5 class="font-size-14 mb-3">Iniciar Con</h5>
+
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript::void()"
+                        class="social-list-item bg-primary text-white border-primary"
+                      >
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript::void()"
+                        class="social-list-item bg-info text-white border-info"
+                      >
+                        <i class="mdi mdi-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript::void()"
+                        class="social-list-item bg-danger text-white border-danger"
+                      >
+                        <i class="mdi mdi-google"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- end card -->
+
+        <div class="mt-5 text-center">
+          <p>
+            Ya tienes una cuenta ?
+            <a routerLink="/account/login" class="fw-medium text-primary">
+              Login</a
+            >
+          </p>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>

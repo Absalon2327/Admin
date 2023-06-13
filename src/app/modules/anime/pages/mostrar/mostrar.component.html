@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <app-page-title
+    title="Anime"
+    [breadcrumbItems]="breadCrumbItems"
+  ></app-page-title>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    [(ngModel)]="term"
+                  />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--SCROLL -->
+          <app-tabla [cards]="cards" [queryString]="term"></app-tabla>
+        </div>
+      </div>
+    </div>
+    <!-- aquí grafica -->
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <app-grafica-a [data]="dataGrafica" title="Anime" [labels]="labels" [colors]="colores"></app-grafica-a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-2">
+              <app-grafica-b [data]="dataApex"></app-grafica-b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- aquí grafica -->
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-2">
+              <app-grafica-a [data]="dataGrafica" title="Anime" [labels]="labels" [colors]="colores"></app-grafica-a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
