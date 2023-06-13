@@ -71,75 +71,111 @@
 
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
+                  <div class="input-group auth-pass-inputgroup">
+                    <input
+                      type="email"
+                      formControlName="email"
+                      class="form-control"
+                      [class]="esCampoValido('email')"
+                      id="email"
+                      placeholder="Email"
+                    />
 
-                  <input
-                    type="email"
-                    formControlName="email"
-                    class="form-control"
-                    [class]="esCampoValido('email')"
-                    id="email"
-                    placeholder="Email"
-                  />
-
-                  <div class="invalid-feedback">
-                    <span *ngIf="signupForm.get('email')?.errors?.['required']">
-                      Ingrese un email
-                    </span>
-                    <span *ngIf="signupForm.get('email')?.errors?.['pattern']">
-                      Sólo letras
-                    </span>
+                    <div class="invalid-feedback">
+                      <span
+                        *ngIf="signupForm.get('email')?.errors?.['required']"
+                      >
+                        Ingrese un email
+                      </span>
+                      <span
+                        *ngIf="signupForm.get('email')?.errors?.['pattern']"
+                      >
+                        Sólo letras
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 <div class="mb-3">
                   <label for="password" class="form-label">Contraseña</label>
-
-                  <input
-                    type="password"
-                    formControlName="password"
-                    class="form-control"
-                    [class]="esCampoValido('password')"
-                    id="password"
-                    placeholder="Ingrese su contraseña"
-                  />
-                  <div class="invalid-feedback">
-                    <span
-                      *ngIf="signupForm.get('password')?.errors?.['required']"
+                  <div class="input-group auth-pass-inputgroup">
+                    <input
+                      type="password"
+                      formControlName="password"
+                      class="form-control"
+                      [class]="esCampoValido('password')"
+                      id="password"
+                      placeholder="Ingrese su contraseña"
+                      minlength="8"
+                    />
+                    <button
+                      class="btn btn-light ms-0"
+                      type="button"
+                      id="password-addon"
                     >
-                      Contraseña requerida
-                    </span>
-                    <span
-                      *ngIf="signupForm.get('password')?.errors?.['pattern']"
-                    >
-                      Mayusculas, minusculas, números, caracteres especeiales
-                    </span>
+                      <i
+                        class="icon mdi mdi-eye-outline"
+                        (click)="verContra()"
+                      ></i>
+                    </button>
+                    <div class="invalid-feedback">
+                      <span
+                        *ngIf="signupForm.get('password')?.errors?.['required']"
+                      >
+                        Contraseña requerida
+                      </span>
+                      <span
+                        *ngIf="signupForm.get('password')?.errors?.['pattern']"
+                      >
+                        Mayusculas, minusculas, números, caracteres especeiales,
+                      </span>
+                      <span
+                        *ngIf="signupForm.get('password')?.errors?.['minlength']"
+                      >
+                        8 caracatares como mínimo
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 <div class="mb-3">
-                  <label for="password" class="form-label"
-                    >Repita su Contraseña</label
-                  >
-
-                  <input
-                    type="password"
-                    formControlName="repassword"
-                    class="form-control"
-                    [class]="esCampoValido('repassword')"
-                    id="repassword"
-                    placeholder="Ingrese su contraseña"
-                  />
-                  <div class="invalid-feedback">
-                    <span
-                      *ngIf="signupForm.get('repassword')?.errors?.['required']"
+                  <label for="repassword">Repita su Contraseña</label>
+                  <div class="input-group auth-pass-inputgroup">
+                    <input
+                      type="password"
+                      formControlName="repassword"
+                      class="form-control"
+                      [class]="esCampoValido('repassword')"
+                      id="repassword"
+                      placeholder="Ingrese su contraseña"
+                    />
+                    <button
+                      class="btn btn-light ms-0"
+                      type="button"
+                      id="password-addon"
                     >
-                      Contraseña requerida
-                    </span>
-                    <span
-                      *ngIf="signupForm.get('repassword')?.errors?.['pattern']"
-                    >
-                      Mayusculas, minusculas, números, caracteres especeiales
-                    </span>
+                      <i
+                        class="icon mdi mdi-eye-outline"
+                        (click)="verReContra()"
+                      ></i>
+                    </button>
+                    <div class="invalid-feedback">
+                      <span
+                        *ngIf="signupForm.get('repassword')?.errors?.['required']"
+                      >
+                        Contraseña requerida
+                      </span>
+                      <span
+                        *ngIf="signupForm.get('repassword')?.errors?.['pattern']"
+                      >
+                        Mayusculas, minusculas, números, caracteres especeiales,
+                      </span>
+                      <span
+                        *ngIf="signupForm.get('password')?.errors?.['minlength']"
+                      >
+                        8 caracatares como mínimo
+                      </span>
+                    </div>
                   </div>
                 </div>
 

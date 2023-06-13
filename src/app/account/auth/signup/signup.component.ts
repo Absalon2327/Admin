@@ -73,6 +73,23 @@ export class SignupComponent implements OnInit {
       : "";
   }
 
+  verContra() {
+    const contra: any = document.getElementById("password");
+    if (contra.type == "password") {
+      contra.type = "text";
+    } else {
+      contra.type = "password";
+    }
+  }
+  verReContra() {
+    const contra: any = document.getElementById("repassword");
+    if (contra.type == "password") {
+      contra.type = "text";
+    } else {
+      contra.type = "password";
+    }
+  }
+
   onSubmit() {
     this.submitted = true;
     let contra = this.signupForm.get("password").value;
