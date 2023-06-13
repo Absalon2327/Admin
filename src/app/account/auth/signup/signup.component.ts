@@ -47,15 +47,16 @@ export class SignupComponent implements OnInit {
     return (this.signupForm = this.formBuilder.group({
       nombre_usuario: [
         "",
-        Validators.required,
-        Validators.pattern(this.isNombre),
+        [Validators.required, Validators.pattern(this.isNombre)],
       ],
       email: ["", [Validators.required, Validators.pattern(this.isEmail)]],
-      password: ["", Validators.required, Validators.pattern(this.isPassword)],
+      password: [
+        "",
+        [Validators.required, Validators.pattern(this.isPassword)],
+      ],
       repassword: [
         "",
-        Validators.required,
-        Validators.pattern(this.isPassword),
+        [Validators.required, Validators.pattern(this.isPassword)],
       ],
     }));
   }
@@ -109,7 +110,6 @@ export class SignupComponent implements OnInit {
               });
               //this.router.navigate(["/dashboard"]);
             }
-
           })
           .catch((error) => {
             this.error = error ? error : "";
@@ -123,13 +123,13 @@ export class SignupComponent implements OnInit {
               this.successmsg = true;
               if (this.successmsg) {
                 //this.router.navigate(["/account/login"]);
-
-              }Swal.fire({
-                  position: "center",
-                  title: "Bienvenido!",
-                  text: "Registro Exitoso!",
-                  icon: "success",
-                });
+              }
+              Swal.fire({
+                position: "center",
+                title: "Bienvenido!",
+                text: "Registro Exitoso!",
+                icon: "success",
+              });
             },
             (error) => {
               this.error = error ? error : "";
