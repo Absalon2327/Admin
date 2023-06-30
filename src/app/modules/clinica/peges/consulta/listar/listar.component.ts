@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ConsultaService } from '../../../services/consulta.service';
+import { HttpClient } from '@angular/common/http';
+import { IConsulta } from '../../../interfaces/consulta.interface';
 
 @Component({
   selector: 'app-listar',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
+  iConsultas: IConsulta[];
 
-  constructor() { }
+  @Input() queryString: string;
+  p: any;
+  constructor(private consultaService: ConsultaService, private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.getConsultas();
+  }
+
+  getConsultas(){
+    this.consultaService.getConsultas().subscribe({
+      next: (response) =>{
+        console.log("datos:", response);
+
+      }
+    })
   }
 
 }
