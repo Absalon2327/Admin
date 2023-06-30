@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   defaultauth: 'fackbackend',
+  baseURL: 'https://nodejsclusters-130234-0.cloudclusters.net/api',
   firebaseConfig: {
     apiKey: '',
     authDomain: '',
@@ -16,6 +17,8 @@ export const environment = {
     measurementId: ''
   }
 };
+//export const baseURL = 'https://nodejsclusters-130234-0.cloudclusters.net/api';
+
 
 
 

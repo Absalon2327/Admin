@@ -134,6 +134,7 @@ export class ListarbibliotecasComponent implements OnInit {
     this.modalService.open(content);
   }
   paraEditar(content: any, biblioteca: Biblioteca, libro: Libro, i: number) {
+    this.initForm();
     this.bibliotecaSeleccionada = biblioteca;
     this.libroSeleccionado = libro;
     this.submitted = false;
@@ -213,7 +214,9 @@ export class ListarbibliotecasComponent implements OnInit {
 
   editarLibro() {
     const nombre = this.formLibro.get("nombre").value;
-    this.libroSeleccionado = nombre;
+    this.libroSeleccionado.nombre_libro = nombre;
+    console.log("libro: ", this.libroSeleccionado.nombre_libro);
+
     this.libroSeleccionado.biblioteca = this.bibliotecaSeleccionada;
     //aqui guardar
     this.libroService.editarLibro(this.libroSeleccionado).subscribe({

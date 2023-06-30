@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="card overflow-hidden">
+    <div class="bg-primary bg-soft">
+      <div class="row">
+        <div class="col-7">
+          <div class="text-primary p-3 text-center">
+            <h5 class="text-primary">Cambiar Imagen</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="text-center">
+        <img
+          *ngIf="!imgTemp"
+          [src]="perfil.ImagenUrl"
+          class="img-thumbnail rounded-circle"
+          alt
+        />
+        <img
+          *ngIf="imgTemp"
+          [src]="imgTemp"
+          class="img-thumbnail rounded-circle"
+          alt
+        />
+      </div>
+      <div class="input-group">
+        <input
+          type="file"
+          class="form-control"
+          id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04"
+          aria-label="Upload"
+          (change)="preVisualizarImagen($event)"
+        />
+        <button
+          class="btn btn-primary"
+          type="button"
+          id="inputGroupFileAddon04"
+          [disabled]="!imagenSubir" (click)="subirImagen()"
+        >
+          Cambiar Imagen
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

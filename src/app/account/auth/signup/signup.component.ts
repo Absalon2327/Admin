@@ -6,8 +6,9 @@ import { AuthenticationService } from "../../../core/services/auth.service";
 import { environment } from "../../../../environments/environment";
 import { first } from "rxjs/operators";
 import { UserProfileService } from "../../../core/services/user.service";
-import { IS_CLAVE, IS_EMAIL, IS_NAME } from "../constants/validaciones";
+import { IS_CLAVE, IS_EMAIL, IS_NAME } from "../../constants/validaciones";
 import Swal from "sweetalert2";
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: "app-signup",
@@ -31,7 +32,8 @@ export class SignupComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserProfileService
+    private userService: UserProfileService,
+    private usuarioService: UsuarioService
   ) {}
 
   ngOnInit() {
@@ -43,9 +45,41 @@ export class SignupComponent implements OnInit {
     return this.signupForm.controls;
   }
 
-  iniciarFormulario(): FormGroup {
+  crearUsuario(){
+    this.submitted = true;
+    if (this.signupForm.valid) {
+      this.usuarioService.crearUsuario(this.signupForm.value).subscribe({
+        next: (resp) =>{
+          this.router.navigate(['account/login']);
+          Swal.fire({
+            position: "top-end",
+            title: "Guardado con Exito!",
+            text: "Registro Exitoso!",
+            showConfirmButton: false,
+            icon: "success",
+            timer: 2000
+          });
+        },
+        error: (err) =>{
+          Swal.fire({
+            title: "Error",
+            text: err,
+            icon: "error",
+          });
+        }
+      })
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: 'Algo Salió Mal!',
+        icon: "error",
+      });
+    }
+  }
+
+  private iniciarFormulario(): FormGroup {
     return (this.signupForm = this.formBuilder.group({
-      nombre_usuario: [
+      nombre: [
         "",
         [Validators.required, Validators.pattern(this.isNombre)],
       ],

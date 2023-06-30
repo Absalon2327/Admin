@@ -861,4 +861,17 @@ export const MENU: MenuItem[] = [
       },
     ],
   },
+  {
+    id: 132,
+    label: "Reportes",
+    icon: "bx bx-file",
+    subItems: [
+      {
+        id: 134,
+        label: "Listar",
+        link: "/consulta/listar",
+        parentId: 132,
+      },
+    ],
+  },
 ];

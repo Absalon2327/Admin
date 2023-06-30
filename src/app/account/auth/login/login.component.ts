@@ -8,8 +8,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { first } from "rxjs/operators";
 
 import { environment } from "../../../../environments/environment";
-import { IS_CLAVE, IS_EMAIL, IS_NAME } from "../constants/validaciones";
+import { IS_CLAVE, IS_EMAIL, IS_NAME } from "../../constants/validaciones";
 import Swal from "sweetalert2";
+import { UsuarioService } from "../../services/usuario.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-login",
@@ -21,6 +23,7 @@ import Swal from "sweetalert2";
  * Login component
  */
 export class LoginComponent implements OnInit {
+  storage: Storage = window.localStorage;
   loginForm!: FormGroup;
   submitted = false;
   error = "";
@@ -39,7 +42,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private authFackservice: AuthfakeauthenticationService
+    private authFackservice: AuthfakeauthenticationService,
+    private usuarioServicio: UsuarioService
   ) {}
 
   ngOnInit() {
@@ -57,8 +61,8 @@ export class LoginComponent implements OnInit {
       password: [
         "",
         [Validators.required, Validators.pattern(this.isPassword)],
-        [Validators.minLength]
       ],
+      remenber: [false],
     }));
   }
 
@@ -84,11 +88,10 @@ export class LoginComponent implements OnInit {
   get f() {
     return this.loginForm.controls;
   }
-
   /**
    * Form submit
    */
-  onSubmit() {
+  login() {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -100,32 +103,26 @@ export class LoginComponent implements OnInit {
         icon: "warning",
       });
       return Object.values(this.loginForm.controls).forEach((control) =>
-      control.markAsTouched()
-    );
-    } else {
-      if (environment.defaultauth === "firebase") {
-        this.authenticationService
-          .login(this.f.email.value, this.f.password.value)
-          .then((res: any) => {
-            this.router.navigate(["/dashboard"]);
-          })
-          .catch((error) => {
-            this.error = error ? error : "";
-          });
-      } else {
-        this.authFackservice
-          .login(this.f.email.value, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-            (data) => {
-              this.router.navigate(["/dashboard"]);
-            },
-            (error) => {
-              this.error = error ? error : "";
-            }
-          );
-      }
+        control.markAsTouched()
+      );
     }
 
+    this.usuarioServicio.login(this.loginForm.value).subscribe({
+      next: (resp) => {
+        if (this.loginForm.get("remenber")?.value) {
+          this.storage.setItem("email", this.loginForm.get("email")?.value);
+        } else {
+          this.storage.removeItem("email");
+        }
+        this.router.navigate(["/dashboard"]);
+      },
+      error: (error) => {
+        Swal.fire({
+          title: "Error",
+          text: error,
+          icon: "error",
+        });
+      },
+    });
   }
 }

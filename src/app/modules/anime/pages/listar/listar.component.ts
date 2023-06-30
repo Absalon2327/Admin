@@ -49,6 +49,12 @@ export class ListarComponent implements OnInit {
     this.animeService.busquedas(this.a, this.offset);
   } */
 
+  canExit():boolean {
+    if (confirm('Seguro que seas salir?')) {
+      return true;
+    }
+    return false;
+  }
   buscarCards() {
     this.animeService.getCardsAnime(this.offset).subscribe((res) => {
       console.log(res);

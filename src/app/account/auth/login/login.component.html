@@ -39,7 +39,7 @@
               <form
                 class="form-horizontal"
                 [formGroup]="loginForm"
-                (ngSubmit)="onSubmit()"
+                (ngSubmit)="login()"
               >
                 <ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{
                   error
@@ -104,9 +104,10 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    id="remember-check"
+                    id="remenber"
+                    formControlName="remenber"
                   />
-                  <label class="form-check-label" for="remember-check">
+                  <label class="form-check-label" for="remenber">
                     Recordar
                   </label>
                 </div>

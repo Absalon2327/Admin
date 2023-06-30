@@ -12,3 +12,4 @@ export const environment = {
     measurementId: ''
   }
 };
+export const baseURL = 'https://nodejsclusters-130234-0.cloudclusters.net/api';
