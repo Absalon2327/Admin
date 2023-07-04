@@ -23,7 +23,7 @@ export class ListarComponent implements OnInit {
     this.consultaService.getConsultas().subscribe({
       next: (response) =>{
         console.log("datos:", response);
-
+        this.iConsultas = response;
       }
     })
   }

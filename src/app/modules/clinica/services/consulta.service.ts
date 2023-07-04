@@ -12,7 +12,7 @@ export class ConsultaService {
 
   constructor(private htt:HttpClient) { }
 
-  public getConsultas(): Observable<IConsulta>{
-    return this.htt.get<IConsulta>(this.url);
+  public getConsultas(): Observable<IConsulta[]>{
+    return this.htt.get<IConsulta[]>(this.url);
   }
 }

@@ -1,8 +1,8 @@
 export interface IConsulta{
   idConsulta: number;
-  paciente: string;
-  medico: string;
-  especialidad: string;
+  nombrePaciente: string;
+  nombreMedico: string;
+  nombreEspecialidad: string;
   numConsultorio: string;
   fechaConsultario: string;
   horaConsulta: string;
