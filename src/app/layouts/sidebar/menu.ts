@@ -868,8 +868,14 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         id: 134,
-        label: "Listar",
-        link: "/consulta/listar",
+        label: "PDF",
+        link: "/consulta/pdfs",
+        parentId: 132,
+      },
+      {
+        id: 135,
+        label: "EXCEL",
+        link: "/consulta/excel",
         parentId: 132,
       },
     ],

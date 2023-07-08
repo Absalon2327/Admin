@@ -9,11 +9,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UIModule } from 'src/app/shared/ui/ui.module';
+import { ListarPacienteComponent } from './peges/pacientes/listar-paciente/listar-paciente.component';
 
 
 @NgModule({
   declarations: [
-    ListarComponent
+    ListarComponent,
+    ListarPacienteComponent
   ],
   imports: [
     CommonModule,
