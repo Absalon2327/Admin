@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'bibliotecas', component: LayoutComponent, loadChildren: () => import('./modules/bibliotecas/bibliotecas.module').then(m => m.BibliotecasModule), canActivate: [AuthGuard], canLoad: [AuthGuard] },
   { path: 'perfil', component: LayoutComponent, loadChildren: () => import('./modules/perfil/perfil.module').then(m => m.PerfilModule), canActivate: [AuthGuard], canLoad: [AuthGuard] },
   { path: 'consulta', component: LayoutComponent, loadChildren: () => import('./modules/clinica/clinica.module').then(m => m.ClinicaModule), canActivate: [AuthGuard], canLoad: [AuthGuard] },
+  { path: 'reportes', component: LayoutComponent, loadChildren: () => import('./modules/clinica/clinica.module').then(m => m.ClinicaModule), canActivate: [AuthGuard], canLoad: [AuthGuard] },
+  { path: 'archivos', component: LayoutComponent, loadChildren: () => import('./modules/archivos/archivos.module').then(m => m.ArchivosModule), canActivate: [AuthGuard], canLoad: [AuthGuard] },
   { path: '**', component: Page404Component },
 ];
 

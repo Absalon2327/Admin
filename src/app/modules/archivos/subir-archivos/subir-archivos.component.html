@@ -1,0 +1,49 @@
+<app-loader></app-loader>
+<app-page-title
+  title="Archivos"
+  [breadcrumbItems]="breadCrumbItems"
+></app-page-title>
+<div class="container-fluid">
+  <app-page-title
+    title="File Uploads"
+    [breadcrumbItems]="breadCrumbItems"
+  ></app-page-title>
+  <div class="card">
+    <div class="card-body">
+      <input
+        type="file"
+        class="file-input"
+        (change)="onFileSelected($event)"
+        #fileUpload
+      />
+
+      <div class="file-upload">
+        <button type="button" class="btn btn-primary mt-2" (click)="subir()">
+          Subir
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h1>Subir varios archivos</h1>
+
+      <div class="form-group">
+        <label for="file">File</label>
+        <input
+          type="file"
+          multiple
+          class="form-control"
+          id="file"
+          (change)="onFileChange($event)"
+        />
+
+        <div class="file-upload mt-2">
+          <button type="button" class="btn btn-primary" (click)="multiple()">
+            Multiple
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

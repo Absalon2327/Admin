@@ -878,6 +878,26 @@ export const MENU: MenuItem[] = [
         link: "/consulta/excel",
         parentId: 132,
       },
+      {
+        id: 135,
+        label: "VARIOS",
+        link: "/reportes/varios",
+        parentId: 132,
+      },
+    ],
+  },
+  {
+    id: 133,
+    label: "Archivos",
+    icon: "bx bx-file",
+    subItems: [
+      {
+        id: 136,
+        label: "Uploads Files",
+        link: "/archivos/subir",
+        parentId: 133,
+      },
+
     ],
   },
 ];

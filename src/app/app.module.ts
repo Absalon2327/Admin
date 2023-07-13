@@ -39,7 +39,7 @@ export function createTranslateLoader(http: HttpClient): any {
 @NgModule({
   declarations: [
     AppComponent,
-    CyptolandingComponent
+    CyptolandingComponent,
   ],
   imports: [
     BrowserModule,

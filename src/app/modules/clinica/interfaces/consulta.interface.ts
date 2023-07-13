@@ -4,7 +4,7 @@ export interface IConsulta{
   nombreMedico: string;
   nombreEspecialidad: string;
   numConsultorio: string;
-  fechaConsultario: string;
+  fechaConsulta: string;
   horaConsulta: string;
 }
 
@@ -22,3 +22,21 @@ export interface IPacientes{
   direccionPaciente: string;
 }
 
+export interface IConsulta2{
+  nombrePaciente: string;
+  nombreMedico: string;
+  nombreEspecialidad: string;
+  fechaConsulta: string;
+}
+
+export interface IMedicos{
+  id_medico: string;
+  duiMedico: string;
+  nombreMedico: string;
+  apellidoMedico: string;
+  correoMedico: string;
+  telefonoMedico: string;
+  direccionMedico: string;
+  jvpm: string;
+  nombreCompletoMedico: string;
+}
